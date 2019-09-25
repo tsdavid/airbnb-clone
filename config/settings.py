@@ -39,7 +39,9 @@ DJNAGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "django_countries"  # 장고로 전체 국가를 가지고 올때 사용 : https://github.com/SmileyChris/django-countries
+]
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
