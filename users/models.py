@@ -16,6 +16,16 @@ class User(AbstractUser):
         (GENDER_OTHER, "Other"),
     )
 
+    LANGUAGE_ENGLISH = "en"
+    LANGUAGE_KOREAN = "kr"
+
+    LANGUAGE_CHOICES = ((LANGUAGE_ENGLISH, "English"), (LANGUAGE_KOREAN, "Korean"))
+
+    CURRENCY_USD = "usd"
+    CURRENCY_KRW = "krw"
+
+    CURRENCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_KRW, "KRW"))
+
     avatar = models.ImageField(null=True, blank=True)
     gende = models.CharField(
         default=GENDER_MALE,
@@ -25,3 +35,12 @@ class User(AbstractUser):
         blank=True,
     )
     bio = models.TextField(default="", blank=True)  # blank 는 이 부분이 없어도 저장이 가능하게 넘겨주는거
+    birthdate = models.DateField(null=True)
+    language = models.CharField(
+        choices=LANGUAGE_CHOICES, max_length=2, null=True, blank=True
+    )
+
+    currency = models.CharField(
+        choices=CURRENCY_CHOICES, max_length=3, null=True, blank=True
+    )
+    superhost = models.BooleanField(default=False)
