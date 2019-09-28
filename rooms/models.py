@@ -7,6 +7,24 @@ from users import models as users_models
 #  1. python pack 2. django pack 3. third party pack 4. my pack
 
 
+class AbstractItem(core_models.TimeStampedModel):
+
+    """ Abstract Item """
+
+    name = models.CharField(max_length=80)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return self.name
+
+
+class RoomType(AbstractItem):
+
+    pass
+
+
 class Room(core_models.TimeStampedModel):
 
     """ Room Model Definition """
@@ -27,4 +45,7 @@ class Room(core_models.TimeStampedModel):
     host = models.ForeignKey(
         users_models.User, on_delete=models.CASCADE
     )  # host와 user 묶기
+    room_type = models.ManyToManyField(RoomType, blank=True)
 
+    def __str__(self):
+        return self.name
