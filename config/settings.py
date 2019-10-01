@@ -48,6 +48,7 @@ PROJECT_APPS = [
     "users.apps.UsersConfig",
     "rooms.apps.RoomsConfig",
     "reviews.apps.ReviewsConfig",
+    "reservations.apps.ReservationsConfig",
 ]
 
 INSTALLED_APPS = DJNAGO_APPS + PROJECT_APPS
