@@ -101,4 +101,4 @@ class Room(core_models.TimeStampedModel):
         for review in all_reviews:
             print(review.rating_a)
 
-    print("git test")
+
