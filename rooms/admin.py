@@ -70,14 +70,14 @@ class RoomAdmin(admin.ModelAdmin):
     # filter_horizontal only use when ManytoMany relationship
 
     def count_amenities(self, obj):  # self는 class에서 받은거, obj는 row에 해당한다.
-        print(obj.amenities.all())  # return : The David's House 라고 나옴, row를 호출하네
+        # print(obj.amenities.all())  # return : The David's House 라고 나옴, row를 호출하네
         # obj는 row에 해당하고 print된거는 __str__ 때문에 house name이 나오는거 임
         # 해당 obj에 요소로 들어갈 수 있음
         # 정말 멋지다.
         # obj.amenities.all() -> <QuerySet [<Amenity: WiFi>]>: QuerySet이 나옴
-        return "Potato"
+        return obj.amenities.count()
 
-    count_amenities.short_description = "Hello Sexy"  # 와우 이렇게 하면 위 타이틀을 변경할 수 있음
+    # count_amenities.short_description = "Hello Sexy"  # 와우 이렇게 하면 위 타이틀을 변경할 수 있음
 
 
 @admin.register(models.Photo)
