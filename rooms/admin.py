@@ -44,8 +44,12 @@ class RoomAdmin(admin.ModelAdmin):
         "check_in",
         "check_out",
         "instant_book",
+        "count_amenities",  # 함수를 스트링 형식으로
     )
     # list_display는 어드민 패널에서 정보를 보여주는 역할
+
+    ordering = ("name", "price", "bedrooms")
+
     list_filter = (
         "instant_book",
         "host__superhost",
@@ -64,6 +68,16 @@ class RoomAdmin(admin.ModelAdmin):
 
     filter_horizontal = ("amenities", "facilities", "house_rule")
     # filter_horizontal only use when ManytoMany relationship
+
+    def count_amenities(self, obj):  # self는 class에서 받은거, obj는 row에 해당한다.
+        print(obj.amenities.all())  # return : The David's House 라고 나옴, row를 호출하네
+        # obj는 row에 해당하고 print된거는 __str__ 때문에 house name이 나오는거 임
+        # 해당 obj에 요소로 들어갈 수 있음
+        # 정말 멋지다.
+        # obj.amenities.all() -> <QuerySet [<Amenity: WiFi>]>: QuerySet이 나옴
+        return "Potato"
+
+    count_amenities.short_description = "Hello Sexy"  # 와우 이렇게 하면 위 타이틀을 변경할 수 있음
 
 
 @admin.register(models.Photo)
