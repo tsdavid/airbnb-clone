@@ -7,6 +7,11 @@ class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition """
 
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj):
+        return obj.rooms.count()
+
     pass
 
 
@@ -45,6 +50,7 @@ class RoomAdmin(admin.ModelAdmin):
         "check_out",
         "instant_book",
         "count_amenities",  # 함수를 스트링 형식으로
+        "count_photos",
     )
     # list_display는 어드민 패널에서 정보를 보여주는 역할
 
@@ -76,6 +82,9 @@ class RoomAdmin(admin.ModelAdmin):
         # 정말 멋지다.
         # obj.amenities.all() -> <QuerySet [<Amenity: WiFi>]>: QuerySet이 나옴
         return obj.amenities.count()
+
+    def count_photos(self, obj):
+        return obj.photos.count()
 
     # count_amenities.short_description = "Hello Sexy"  # 와우 이렇게 하면 위 타이틀을 변경할 수 있음
 
