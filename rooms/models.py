@@ -95,3 +95,8 @@ class Room(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
+    
+    def total_rating(self):
+        all_reviews = self.review.all()
+        for review in all_reviews:
+            print(review.rating_a)

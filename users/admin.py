@@ -29,3 +29,18 @@ class CustomUserAdmin(UserAdmin):
         ),  # sub title
     )
 
+    list_filter = UserAdmin.list_filter + ("superhost",)
+
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "language",
+        "currency",
+        "superhost",
+        "is_staff",  # is_staff는 model에 없는데 뭐지?, 아마 UserAdmin에서 온거같음
+        "is_superuser",
+    )
+
