@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 from . import models
 
 
@@ -95,4 +96,11 @@ class PhotoAdmin(admin.ModelAdmin):
 
     """ Photo Admin Definition """
 
-    pass
+    list_display = ("__str__", "get_thumnail")
+
+    def get_thumnail(self, obj):
+        return mark_safe(f'<img width="50px" src="{obj.file.url}"/>')
+        # mark_safe는 기본적으로 장고가 정보보호를 위해서 html태그를 발동 못하게 막아놓을 걸
+        # 태그를 활성화 할 수 있게 하는 거임
+
+    get_thumnail.short_description = "Thumbnail"
