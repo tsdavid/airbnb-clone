@@ -16,10 +16,19 @@ class ItemAdmin(admin.ModelAdmin):
     pass
 
 
+class PhotoInline(admin.StackedInline):
+    # Inline  종류가 있다 admin에서 보여지는 방식에 차이가 있을 뿐
+    # TabularInline, StackedInline  취향 따라 가자
+
+    model = models.Photo
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
     """ Room Admin Definition """
+
+    inlines = (PhotoInline,)
 
     fieldsets = (
         (
@@ -71,6 +80,9 @@ class RoomAdmin(admin.ModelAdmin):
     )
     # list_filter는 해당 정보로 필터링 하는 것
 
+    raw_id_fields = ("host",)
+    # raw_id_fiedls는 Foriegn key를 id로 나타내서 관리하기 용기하기 만듬
+
     search_fields = ("=city", "^host__username")
     # admin에서 다른 foreign key를 하려면 __ 를 써야하나봄
 
@@ -99,7 +111,9 @@ class PhotoAdmin(admin.ModelAdmin):
     list_display = ("__str__", "get_thumnail")
 
     def get_thumnail(self, obj):
-        return mark_safe(f'<img width="50px" src="{obj.file.url}"/>')
+        return mark_safe(
+            f'<a href="{obj.file.url}"> <img width="50px" src="{obj.file.url}"/></a>'
+        )
         # mark_safe는 기본적으로 장고가 정보보호를 위해서 html태그를 발동 못하게 막아놓을 걸
         # 태그를 활성화 할 수 있게 하는 거임
 
