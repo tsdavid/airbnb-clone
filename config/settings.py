@@ -135,3 +135,6 @@ AUTH_USER_MODEL = "users.User"  # 장고 기본 user앱 보다 몇 개 더 필�
 
 # MEDIA SETTINGS
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+
+MEDIA_URL = "/media/"  # Url redirection?, url을 media이후 부터 나오게 끔, 중간에 이상한거 없앰
+
