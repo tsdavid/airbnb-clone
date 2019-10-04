@@ -131,3 +131,7 @@ STATIC_URL = "/static/"
 
 AUTH_USER_MODEL = "users.User"  # 장고 기본 user앱 보다 몇 개 더 필요한게 있어서, 기존 꺼를 상속받아서 추가해서 사용한다
 # https://docs.djangoproject.com/en/2.2/topics/auth/customizing/#substituting-a-custom-user-model
+
+
+# MEDIA SETTINGS
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")

@@ -56,7 +56,9 @@ class Photo(core_models.TimeStampedModel):
     """ Photo Model Definition"""
 
     caption = models.CharField(max_length=80)
-    file = models.ImageField()
+    file = models.ImageField(
+        upload_to="room_photos"
+    )  # MEDIA_ROOT에서 저장되는 것 중에서도 파일을 따로 관리 할 수 있다.
     room = models.ForeignKey(
         "Room", related_name="photos", on_delete=models.CASCADE
     )  # 다른 모델 가지고올때 string으로 해도 가지고 와도됨
