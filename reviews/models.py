@@ -21,7 +21,8 @@ class Review(core_models.TimeStampedModel):
     )
 
     def __str__(self):
-        # return self.room.host.username  # 다른 모델들의 키를 가지고 올수 있다., 모델의 모델을 찾아서 Foreign key로 모델 깊이로 들어감
+        # return self.room.host.username  # 다른 모델들의 키를 가지고 올수 있다.,
+        # 모델의 모델을 찾아서 Foreign key로 모델 깊이로 들어감
         return f"{self.review} - {self.room}"  # 이렇게 작성하니까 너무 편하네
 
     # Room에서 amedities 숫자 새고 하는 건 admin 쪽에서만 필요하니까, admin.py에서 진행했는데

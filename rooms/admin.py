@@ -51,6 +51,7 @@ class RoomAdmin(admin.ModelAdmin):
         "instant_book",
         "count_amenities",  # 함수를 스트링 형식으로
         "count_photos",
+        "total_rating",
     )
     # list_display는 어드민 패널에서 정보를 보여주는 역할
 
