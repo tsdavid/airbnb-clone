@@ -40,7 +40,8 @@ DJNAGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "django_countries"  # 장고로 전체 국가를 가지고 올때 사용 : https://github.com/SmileyChris/django-countries
+    "django_countries",  # 장고로 전체 국가를 가지고 올때 사용 : https://github.com/SmileyChris/django-countries
+    "django_seed",  # make fake data created on Model that i used
 ]
 
 PROJECT_APPS = [

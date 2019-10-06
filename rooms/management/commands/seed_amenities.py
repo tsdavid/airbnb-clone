@@ -3,7 +3,7 @@ from rooms.models import Amenity
 
 
 class Command(BaseCommand):
-    help = "This is command from loveyou.py "
+    help = "This is command that create Amenities "
 
     # def add_arguments(self, parser):
     #     parser.add_argument(
