@@ -24,6 +24,8 @@ class Command(BaseCommand):
         seeder = Seed.seeder()
         all_users = user_models.User.objects.all()
         all_room_type = room_models.RoomType.objects.all()
+
+        # seed를 통해서 모델에 row들을 만들어 주고
         seeder.add_entity(
             room_models.Room,
             number,
@@ -38,6 +40,10 @@ class Command(BaseCommand):
                 "baths": lambda x: random.randint(0, 5),
             },
         )
+
+        # seed를 통해 만들어진 row의 데이터들으
+        # Query로 저장한다.
+
         # seeder.excute()를 통해서 room을 만들고
         # 만든 room의 pk 번호를 기준으로
         # 사진을 url형식으로 pk를 통해 저장한다.
