@@ -71,7 +71,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],     # templates 찾는 디렉토리, 기존에는 각 app에서 했는데 여긴 하나에서 관리
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
