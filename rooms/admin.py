@@ -16,7 +16,7 @@ class ItemAdmin(admin.ModelAdmin):
     pass
 
 
-class PhotoInline(admin.StackedInline):
+class PhotoInline(admin.TabularInline):
     # Inline  종류가 있다 admin에서 보여지는 방식에 차이가 있을 뿐
     # TabularInline, StackedInline  취향 따라 가자
 
@@ -100,6 +100,8 @@ class RoomAdmin(admin.ModelAdmin):
     def count_photos(self, obj):
         return obj.photos.count()
 
+    count_photos.short_description = "Photo Counts"
+
     # count_amenities.short_description = "Hello Sexy"  # 와우 이렇게 하면 위 타이틀을 변경할 수 있음
 
 
@@ -111,9 +113,7 @@ class PhotoAdmin(admin.ModelAdmin):
     list_display = ("__str__", "get_thumnail")
 
     def get_thumnail(self, obj):
-        return mark_safe(
-            f'<a href="{obj.file.url}"> <img width="50px" src="{obj.file.url}"/></a>'
-        )
+        return mark_safe(f'<img width="50px" src="{obj.file.url}"/>')
         # mark_safe는 기본적으로 장고가 정보보호를 위해서 html태그를 발동 못하게 막아놓을 걸
         # 태그를 활성화 할 수 있게 하는 거임
 
