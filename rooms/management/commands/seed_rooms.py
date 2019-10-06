@@ -43,12 +43,27 @@ class Command(BaseCommand):
         # 사진을 url형식으로 pk를 통해 저장한다.
         created_photo = seeder.execute()
         created_clean = flatten(list(created_photo.values()))
+        amenities = room_models.Amenity.objects.all()
+        facilities = room_models.Facility.objects.all()
+        rules = room_models.HouseRule.objects.all()
         for pk in created_clean:
             room = room_models.Room.objects.get(pk=pk)
-            for i in range(3, random.randint(10, 17)):
+            for i in range(3, random.randint(10, 30)):
                 room_models.Photo.objects.create(
                     caption=seeder.faker.sentence(),
                     room=room,
                     file=f"room_photos/{random.randint(1, 31)}.webp",
                 )
+            for a in amenities:
+                magic_number = random.randint(0, 15)
+                if magic_number % 2 == 0:
+                    room.amenities.add(a)  # 왜 이걸 2로 나누는 것만 가능한지 이해가 안함
+            for f in facilities:
+                magic_number = random.randint(0, 15)
+                if magic_number % 2 == 0:
+                    room.facilities.add(f)  # 왜 이걸 2로 나누는 것만 가능한지 이해가 안함
+            for r in rules:
+                magic_number = random.randint(0, 15)
+                if magic_number % 2 == 0:
+                    room.house_rule.add(r)  # 왜 이걸 2로 나누는 것만 가능한지 이해가 안함
         self.stdout.write(self.style.SUCCESS(f"{number} Rooms created!"))
