@@ -7,17 +7,17 @@
 
 {% block content %}
 
-    {% for room in page.object_list %}
+    {% for room in object_list %}
         <h1>{{room.name}} / ${{room.price}}</h1>
     {% endfor %}
 
     <h5>
-    {% if page.has_previous %}
-        <a href="?page={{page.previous_page_number}}">Previous</a>
+    {% if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
     {% endif %}
-        Page {{page.number}} Of {{page.paginator.num_pages}}
-    {% if page.has_next %}
-        <a href="?page={{page.next_page_number}}">Next</a>
+        Page {{page_obj.number}} Of {{page_obj.paginator.num_pages}}
+    {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}">Next</a>
     {% endif %}
     </h5>
     {% comment %} 장고 템플렛에서는 함수를 부를 때 ()를 사용하지 않아도 자동적으로 불러옴 {% endcomment %}
