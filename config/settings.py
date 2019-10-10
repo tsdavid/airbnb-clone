@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "%=tfnd#qm7z@ne25p@023=^v!8oh)48!8vg9w&=+7npkr(3x-$"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = "*"
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -71,9 +71,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            os.path.join(BASE_DIR, "templates")
-        ],  # templates 찾는 디렉토리, 기존에는 각 app에서 했는데 여긴 하나에서 관리
+        "DIRS": [os.path.join(BASE_DIR, "templates")],     # templates 찾는 디렉토리, 기존에는 각 app에서 했는데 여긴 하나에서 관리
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
