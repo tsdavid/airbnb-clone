@@ -11,4 +11,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for t in range(0, int(options.get("times"))):
-            self.stdout.write(self.style.ERROR("I love you"))
+            self.stdout.write(self.style.SUCCESS("I love you"))
