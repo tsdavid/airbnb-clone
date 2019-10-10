@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render
+from django_countries import countries
 from . import models
 
 
@@ -22,6 +23,9 @@ class RoomDetail(DetailView):
 
 
 def search(request):
-    city = request.GET.get("city")
+    city = request.GET.get("city", "Anywhere")
+    # request get 한 부분이 blank일 때 ANywhere로 돌림.
     city = str.capitalize(city)
-    return render(request, "rooms/search.html", {"city":city})
+    room_types = models.RoomType.objects.all()
+    context = {"city": city, "contries": countries, "room_types": room_types}
+    return render(request, "rooms/search.html", context=context)

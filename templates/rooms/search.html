@@ -4,9 +4,36 @@
     Search
 {% endblock page_name %}
 
+{% block search-bar %}
+{% endblock search-bar %}
+
 {% block content %}
 
     <h2>Search!</h2>
 
-    <h4>Searching By {{city}}</h4>
+    <form method="get" action="{% url "rooms:search" %}">
+        <div>
+            <label for="city">City</label>
+            <input value="{{city}}" id="city" name="city" placeholder="Search by  City" />
+            {% comment %} input name을 설정하니까 url에서 city = input 값으로 됨 ... 개신기 {% endcomment %}
+        </div>
+        <div>
+            <label for="country">Country</label>
+            <select name="country" id="country">
+                {% for country in contries %}
+                    <option value="{{country.code}}">{{country.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="room_type">Room Type</label>
+            <select name="room_type" id="room_type">
+                {% for room_type in room_types %}
+                    <option value="{{room_type.pk}}">{{room_type.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button>Search</button>
+    </form> 
+
 {% endblock content%}

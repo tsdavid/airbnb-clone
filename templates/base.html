@@ -7,7 +7,15 @@
     <title>{%block page_name%}{%endblock page_name%}| Nbnb</title>
   </head>
   <body>
-    {% include "partials/header.html" %} 
+  <header>
+    {% include "partials/nav.html" %} 
+    {% block search-bar %}
+      <form method="get" action="{% url "rooms:search" %}">
+        <input name="city" placeholder="Search by  City" />
+        {% comment %} input name을 설정하니까 url에서 city = input 값으로 됨 ... 개신기 {% endcomment %}
+      </form>
+    {% endblock search-bar %}
+  </header>
     {% block content %} {% endblock %} 
     {% include "partials/footer.html" %}
   </body>
