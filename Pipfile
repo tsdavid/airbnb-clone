@@ -6,9 +6,10 @@ verify_ssl = true
 [dev-packages]
 flake8 = "*"
 black = "*"
+pylint = "*"
 
 [packages]
-django = "===2.2.5"
+django = "==2.2.5"
 pillow = "*"
 django-countries = "*"
 django-seed = "*"
