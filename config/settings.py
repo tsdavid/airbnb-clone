@@ -144,5 +144,6 @@ MEDIA_URL = "/media/"  # Url redirection?, url을 media이후 부터 나오게 �
 # mail gun 
 EMAIL_HOST = "smtp.mailgun.org"
 EMAIL_PORT = "587"
-EMAIL_HOST_USER = " brad@sandbox11cd0ec98ad747e09bc2d28f83b8971e.mailgun.org"
+EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
 

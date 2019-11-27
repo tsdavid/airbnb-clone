@@ -10,10 +10,10 @@ pylint = "*"
 
 [packages]
 pillow = "*"
-django-countries = "*"
 django-seed = "*"
-django-countires = "*"
 django = "==2.2.5"
+django-dotenv = "*"
+django-countries = "*"
 
 [requires]
 python_version = "3.6"
