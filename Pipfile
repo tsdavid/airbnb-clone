@@ -11,7 +11,7 @@ pylint = "*"
 [packages]
 pillow = "*"
 django-seed = "*"
-django = "==2.2.5"
+django = "==2.2.13"
 django-dotenv = "*"
 django-countries = "*"
 
